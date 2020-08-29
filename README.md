@@ -7,5 +7,5 @@ socks5-dump is a cli for testing socks5 proxy application.
 #### usage
 
 ```sh
-socks5-dump -url http://example.com
+socks5-dump -url http://example.com -verbose
 ```

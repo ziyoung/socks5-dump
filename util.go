@@ -16,7 +16,7 @@ func parseAddr(s string) ([]byte, error) {
 		return nil, errors.New("only http is support")
 	}
 
-	host := u.Host
+	host := u.Hostname()
 	port := 80
 	if u.Port() != "" {
 		port, err = strconv.Atoi(u.Port())
@@ -24,6 +24,7 @@ func parseAddr(s string) ([]byte, error) {
 			return nil, err
 		}
 	}
+
 	var addr []byte
 	if ip := net.ParseIP(host); ip != nil {
 		if ip4 := ip.To4(); ip4 != nil {

@@ -1,13 +1,19 @@
 package main
 
-import "testing"
+import (
+	"testing"
+)
 
 func TestParseAddr(t *testing.T) {
-	addr, err := parseAddr("http://baidu.com")
-	if err != nil {
-		t.Fatal(err)
-	}
-	if len(addr) == 0 {
-		t.Fatal("unable to parse address")
+	inputs := []string{"http://baidu.com", "http://example.com:1234", "http://220.181.38.148:80"}
+	for _, input := range inputs {
+		addr, err := parseAddr(input)
+		if err != nil {
+			t.Fatal(err)
+		}
+		if len(addr) == 0 {
+			t.Fatal("unable to parse address")
+		}
+		// t.Log(hex.EncodeToString(addr))
 	}
 }

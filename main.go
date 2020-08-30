@@ -27,7 +27,7 @@ func main() {
 	flag.Parse()
 	if url == "" {
 		log.Print("url is required")
-		usage()
+		flag.Usage()
 		return
 	}
 
@@ -49,13 +49,9 @@ func main() {
 	}
 }
 
-func usage() {
-	log.Print("usage: socks5-dump [-port <port>] -url url [-verbose]")
-}
-
 func handShake(conn net.Conn, s string) error {
 	// initial request
-	log.Print("send initial request")
+	debugLog.Print("send initial request")
 	initial := []byte{5, 1, 0}
 	_, err := conn.Write(initial)
 	if err != nil {

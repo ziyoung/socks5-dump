@@ -83,7 +83,7 @@ func handShake(conn net.Conn, s string) error {
 	}
 
 	// command response
-	log.Print("read command response")
+	debugLog.Print("read command response")
 	b := []byte{5, 0, 0, 1, 0, 0, 0, 0, 0, 0}
 	_, err = io.ReadFull(conn, buf[:len(b)])
 	if err != nil {
@@ -119,6 +119,8 @@ func dialServer(conn net.Conn, url string) error {
 	if err != nil {
 		return err
 	}
-	log.Print(hex.Dump(b))
+
+	log.Printf("http resonse is\n%s", hex.Dump(b))
+
 	return nil
 }
